@@ -28,11 +28,11 @@ Two workflows, one repo:
 
 ### 1. Curation (currently human-triggered)
 
-Start a Claude Code session pointed at this repo and ask:
+Start a Claude Code session pointed at this repo. The full curation routine lives in `CLAUDE.md` and is auto-loaded by Claude Code, so a short prompt is enough:
 
-> "Pull the current feed.xml from the repo. Build today's IT news summary following the rules in `CLAUDE.md` (or the standing prompt). Prepend new items to `<channel>` in feed.xml, drop items older than 30 days, write `archive/Daily Summary YYYY-MM-DD.xml` and `.md`, commit and push to main with message `Daily IT news summary YYYY-MM-DD`."
+> "Build today's brief."
 
-Claude reads the approved sources (BBC, DW, France 24, NHK World, ABC Australia, CBC, Swissinfo, NPR, PBS NewsHour, Reuters, AP, AFP, The Conversation, ProPublica, CSMonitor, Al Jazeera English, The Guardian), summarizes paywall-free items from the previous business day, and pushes the result.
+Claude reads `CLAUDE.md`, fetches paywall-free items from the approved sources within the window (after 2:30AM yesterday), summarizes each in ≤4 sentences, prepends them to `feed.xml`, writes the dated archive files, and pushes to `main`.
 
 ### 2. Publish (fully automated)
 
@@ -57,7 +57,7 @@ You can also trigger it manually: **Actions → Publish to Wix → Run workflow 
 ```
 .
 ├── README.md                       ← this file
-├── feed.xml                        ← live RSS feed (rolling 30 days)
+├── feed.xml                        ← live RSS feed (rolling 7 days)
 ├── pipeline.py                     ← helper to regenerate feed.xml from stories.json
 ├── stories.json                    ← optional curated story list for offline mode
 ├── wix_publish.py                  ← posts latest archive to Wix Blog
