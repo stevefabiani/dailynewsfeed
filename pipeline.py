@@ -90,14 +90,29 @@ def build_feed(stories: list[dict]) -> str:
     rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
 
     channel = SubElement(rss, "channel")
-    SubElement(channel, "title").text = "Daily IT News"
+    SubElement(channel, "title").text = "Cobalt Shields - What We're Reading Today"
     SubElement(channel, "link").text = "https://github.com/stevefabiani/dailynewsfeed"
     SubElement(channel, "description").text = (
-        "Top IT, cybersecurity, and infrastructure stories — updated daily"
+        "Cobalt Shields — Trusted | Reliable. Daily IT, cybersecurity, and "
+        "infrastructure reading list curated for healthcare, higher ed, "
+        "government, K-12, and nonprofit leaders."
     )
     SubElement(channel, "language").text = "en-us"
-    SubElement(channel, "lastBuildDate").text = formatdate(usegmt=True)
+    now = formatdate(usegmt=True)
+    SubElement(channel, "lastBuildDate").text = now
+    SubElement(channel, "pubDate").text = now
     SubElement(channel, "generator").text = "dailynewsfeed/pipeline.py"
+
+    image = SubElement(channel, "image")
+    SubElement(image, "url").text = (
+        "https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/"
+        "Color%20logo%20with%20background.svg"
+    )
+    SubElement(image, "title").text = "Cobalt Shields - What We're Reading Today"
+    SubElement(image, "link").text = "https://github.com/stevefabiani/dailynewsfeed"
+    SubElement(image, "width").text = "144"
+    SubElement(image, "height").text = "46"
+    SubElement(image, "description").text = "Cobalt Shields — Trusted | Reliable"
 
     atom_link = SubElement(channel, "atom:link")
     atom_link.set(
