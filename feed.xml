@@ -1,0 +1,172 @@
+<?xml version="1.0" ?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Daily IT News</title>
+    <link>https://github.com/stevefabiani/dailynewsfeed</link>
+    <description>Top IT, cybersecurity, and infrastructure stories — updated daily</description>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 May 2026 02:04:49 GMT</lastBuildDate>
+    <generator>dailynewsfeed/pipeline.py</generator>
+    <atom:link href="https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/feed.xml" rel="self" type="application/rss+xml"/>
+    <item>
+      <title>Microsoft May 2026 Patch Tuesday fixes 120 flaws, no zero-days</title>
+      <link>https://www.bleepingcomputer.com/news/microsoft/microsoft-may-2026-patch-tuesday-fixes-120-flaws-no-zero-days/</link>
+      <guid isPermaLink="true">https://www.bleepingcomputer.com/news/microsoft/microsoft-may-2026-patch-tuesday-fixes-120-flaws-no-zero-days/</guid>
+      <description>Microsoft's May 2026 Patch Tuesday addresses 120 vulnerabilities including 29 critical RCE flaws. CVE-2026-41089 is a critical stack-based buffer overflow in Windows Netlogon granting SYSTEM privileges. No zero-days exploited in the wild — the first zero-day-free cycle since June 2024. | Source: BleepingComputer</description>
+      <pubDate>Tue, 12 May 2026 17:00:00 GMT</pubDate>
+      <category>Patch Management</category>
+    </item>
+    <item>
+      <title>Cisco Patches Another SD-WAN Zero-Day, the Sixth Exploited in 2026</title>
+      <link>https://www.securityweek.com/cisco-patches-another-sd-wan-zero-day-the-sixth-exploited-in-2026/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/cisco-patches-another-sd-wan-zero-day-the-sixth-exploited-in-2026/</guid>
+      <description>CVE-2026-20182 is an authentication bypass in Cisco SD-WAN that lets remote attackers gain admin privileges. Exploited in targeted attacks by sophisticated threat actor UAT-8616. Sixth Cisco SD-WAN zero-day exploited this year. | Source: SecurityWeek</description>
+      <pubDate>Wed, 13 May 2026 14:30:00 GMT</pubDate>
+      <category>Vulnerabilities</category>
+    </item>
+    <item>
+      <title>F5 Patches Over 50 Vulnerabilities in BIG-IP, BIG-IQ, and NGINX</title>
+      <link>https://www.securityweek.com/f5-patches-over-50-vulnerabilities/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/f5-patches-over-50-vulnerabilities/</guid>
+      <description>F5's May 2026 quarterly security notification details 51 high and medium-severity vulnerabilities impacting BIG-IP, BIG-IQ, and NGINX. Administrators should prioritise patching internet-facing load balancers and application delivery controllers. | Source: SecurityWeek</description>
+      <pubDate>Mon, 12 May 2026 09:00:00 GMT</pubDate>
+      <category>Patch Management</category>
+    </item>
+    <item>
+      <title>CVE-2026-9082: Unauthenticated RCE in Drupal Under Active Exploitation</title>
+      <link>https://www.securityweek.com/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/</guid>
+      <description>CVE-2026-9082 allows unauthenticated remote code execution, privilege escalation, and information disclosure in Drupal. Security firms are already tracking attacks against thousands of websites. Drupal has issued an emergency patch. | Source: SecurityWeek</description>
+      <pubDate>Thu, 14 May 2026 11:00:00 GMT</pubDate>
+      <category>Vulnerabilities</category>
+    </item>
+    <item>
+      <title>Software Supply Chain Attack Targets Multiple PHP Laravel-Lang Packages</title>
+      <link>https://thehackernews.com/</link>
+      <guid isPermaLink="true">https://thehackernews.com/</guid>
+      <description>Cybersecurity researchers disclosed a fresh software supply chain attack campaign targeting multiple PHP packages belonging to Laravel-Lang. Affected packages and tags were published in rapid succession on May 22–23, 2026. Developers are advised to audit composer.lock files immediately. | Source: The Hacker News</description>
+      <pubDate>Fri, 23 May 2026 08:00:00 GMT</pubDate>
+      <category>Supply Chain Security</category>
+    </item>
+    <item>
+      <title>Megalodon Campaign Pushes 5,718 Malicious Commits to GitHub Repositories in Six Hours</title>
+      <link>https://www.securityweek.com/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/</guid>
+      <description>A new automated campaign called Megalodon pushed 5,718 malicious commits to 5,561 GitHub repositories within a six-hour window. The campaign targets CI/CD pipelines by injecting malicious workflow steps. GitHub has suspended the associated accounts. | Source: SecurityWeek</description>
+      <pubDate>Thu, 22 May 2026 16:00:00 GMT</pubDate>
+      <category>Supply Chain Security</category>
+    </item>
+    <item>
+      <title>New Linux Malware &quot;Showboat&quot; Targets Post-Exploitation of Linux Systems</title>
+      <link>https://www.securityweek.com/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/</guid>
+      <description>Cybersecurity researchers disclosed details of Showboat, a new Linux malware designed for post-exploitation. It spawns a remote shell, transfers files, and functions as a SOCKS5 proxy, making it well-suited for stealthy lateral movement inside enterprise environments. | Source: SecurityWeek</description>
+      <pubDate>Wed, 20 May 2026 13:00:00 GMT</pubDate>
+      <category>Malware</category>
+    </item>
+    <item>
+      <title>Canadian Man Arrested for Operating KimWolf DDoS Botnet Infecting Two Million Devices</title>
+      <link>https://www.securityweek.com/</link>
+      <guid isPermaLink="true">https://www.securityweek.com/</guid>
+      <description>U.S. and Canadian authorities arrested and charged a Canadian man accused of operating the KimWolf DDoS botnet, which allegedly infected nearly two million devices worldwide. The botnet was available as a DDoS-for-hire service. | Source: SecurityWeek</description>
+      <pubDate>Tue, 19 May 2026 18:00:00 GMT</pubDate>
+      <category>Threat Intelligence</category>
+    </item>
+    <item>
+      <title>Palo Alto: Frontier AI Models Now Finding Majority of New CVEs in Patch Wednesday Advisories</title>
+      <link>https://www.paloaltonetworks.com/blog/2026/05/defenders-guide-frontier-ai-impact-cybersecurity-may-2026-update/</link>
+      <guid isPermaLink="true">https://www.paloaltonetworks.com/blog/2026/05/defenders-guide-frontier-ai-impact-cybersecurity-may-2026-update/</guid>
+      <description>Palo Alto Networks' May 2026 Defender's Guide reports that frontier AI models discovered the majority of the 26 CVEs in its latest Patch Wednesday advisories. AI is now operating at a speed and scale that fundamentally changes the vulnerability discovery landscape for both attackers and defenders. | Source: Palo Alto Networks</description>
+      <pubDate>Mon, 11 May 2026 10:00:00 GMT</pubDate>
+      <category>AI Security</category>
+    </item>
+    <item>
+      <title>Microsoft's Multi-Model Agentic Security System Tops Leading Industry Benchmark</title>
+      <link>https://www.microsoft.com/en-us/security/blog/2026/05/12/defense-at-ai-speed-microsofts-new-multi-model-agentic-security-system-tops-leading-industry-benchmark/</link>
+      <guid isPermaLink="true">https://www.microsoft.com/en-us/security/blog/2026/05/12/defense-at-ai-speed-microsofts-new-multi-model-agentic-security-system-tops-leading-industry-benchmark/</guid>
+      <description>Microsoft's new multi-model agentic security system achieved 96% recall on 28 MSRC cases spanning five years in clfs.sys and 100% recall on 7 MSRC cases in tcpip.sys, topping industry benchmarks for AI-driven vulnerability triage. | Source: Microsoft Security Blog</description>
+      <pubDate>Tue, 12 May 2026 12:00:00 GMT</pubDate>
+      <category>AI Security</category>
+    </item>
+    <item>
+      <title>IBM Joins Project Glasswing with Anthropic to Protect Critical Software Infrastructure</title>
+      <link>https://www.ibm.com/think/news/ibm-expands-ai-security-cyberattacks-accelerate</link>
+      <guid isPermaLink="true">https://www.ibm.com/think/news/ibm-expands-ai-security-cyberattacks-accelerate</guid>
+      <description>IBM expanded its AI cybersecurity efforts by joining Project Glasswing, a security initiative with Anthropic and other technology firms. The move comes as security executives warn that frontier AI models have sharply accelerated attackers' ability to identify and exploit software vulnerabilities. | Source: IBM</description>
+      <pubDate>Fri, 08 May 2026 09:00:00 GMT</pubDate>
+      <category>AI Security</category>
+    </item>
+    <item>
+      <title>Cognizant Launches Secure AI Services to Help Enterprises Scale Agentic Systems</title>
+      <link>https://news.cognizant.com/2026-05-07-Cognizant-Launches-Secure-AI-Services-to-Help-Enterprises-Safely-Scale-Agentic-Systems</link>
+      <guid isPermaLink="true">https://news.cognizant.com/2026-05-07-Cognizant-Launches-Secure-AI-Services-to-Help-Enterprises-Safely-Scale-Agentic-Systems</guid>
+      <description>Cognizant announced Secure AI Services, an integrated offering designed to help enterprises secure, govern, and scale AI and agentic systems. The launch addresses a significant gap: 63% of organisations cannot enforce purpose limitations on AI agents. | Source: Cognizant</description>
+      <pubDate>Thu, 07 May 2026 14:00:00 GMT</pubDate>
+      <category>AI Security</category>
+    </item>
+    <item>
+      <title>May 2026 Patch Tuesday: 137 Vulnerabilities, No Zero-Days — First Clean Cycle in Years</title>
+      <link>https://socradar.io/blog/may-2026-patch-tuesday-zero-day/</link>
+      <guid isPermaLink="true">https://socradar.io/blog/may-2026-patch-tuesday-zero-day/</guid>
+      <description>SOCRadar's analysis of May 2026 Patch Tuesday covers 137 total vulnerabilities with 47% being elevation-of-privilege flaws. The absence of zero-days marks the first clean Patch Tuesday cycle since June 2024, giving security teams a window to catch up on backlogged patching. | Source: SOCRadar</description>
+      <pubDate>Wed, 13 May 2026 08:00:00 GMT</pubDate>
+      <category>Patch Management</category>
+    </item>
+    <item>
+      <title>Microsoft Ships Azure Linux 4.0 for Cloud AI Workloads</title>
+      <link>https://letsdatascience.com/news/microsoft-ships-azure-linux-40-for-cloud-ai-cf5201ee</link>
+      <guid isPermaLink="true">https://letsdatascience.com/news/microsoft-ships-azure-linux-40-for-cloud-ai-cf5201ee</guid>
+      <description>Microsoft announced Azure Linux 4.0 GA at Open Source Summit North America 2026. The Fedora-derived, RPM-based distribution is purpose-built for AI and cloud-native workloads on Azure, with hardened defaults and optimised kernel configurations for inference at scale. | Source: Let's Data Science</description>
+      <pubDate>Mon, 18 May 2026 10:30:00 GMT</pubDate>
+      <category>Cloud Infrastructure</category>
+    </item>
+    <item>
+      <title>Open Source Summit NA 2026: AI Infrastructure, Supply Chain Security, and Agentic Systems Take Centre Stage</title>
+      <link>https://events.linuxfoundation.org/2026/03/26/open-source-summit-north-america-2026-schedule-showcases-next-era-of-ai-infrastructure-security-and-open-ecosystems/</link>
+      <guid isPermaLink="true">https://events.linuxfoundation.org/2026/03/26/open-source-summit-north-america-2026-schedule-showcases-next-era-of-ai-infrastructure-security-and-open-ecosystems/</guid>
+      <description>The Linux Foundation's 2026 summit in Minneapolis showcased the convergence of AI infrastructure, agentic systems, embedded Linux, and software supply chain security. Microsoft presented Azure Linux 4.0 alongside multiple open-source AI toolchain announcements. | Source: Linux Foundation</description>
+      <pubDate>Mon, 18 May 2026 09:00:00 GMT</pubDate>
+      <category>Open Source</category>
+    </item>
+    <item>
+      <title>Patch Tuesday, May 2026 Edition — Krebs on Security</title>
+      <link>https://krebsonsecurity.com/2026/05/patch-tuesday-may-2026-edition/</link>
+      <guid isPermaLink="true">https://krebsonsecurity.com/2026/05/patch-tuesday-may-2026-edition/</guid>
+      <description>Brian Krebs covers the May 2026 Patch Tuesday, highlighting the critical Netlogon vulnerability CVE-2026-41089, the significance of a zero-day-free cycle, and advice for prioritising the 29 critical RCE patches. Microsoft Office preview-pane exploitation vectors are called out as especially urgent. | Source: Krebs on Security</description>
+      <pubDate>Tue, 12 May 2026 19:00:00 GMT</pubDate>
+      <category>Patch Management</category>
+    </item>
+    <item>
+      <title>Gartner Identifies Top Cybersecurity Trends for 2026: AI-Native Defense, Supply Chain, and Compliance</title>
+      <link>https://www.gartner.com/en/newsroom/press-releases/2026-02-05-gartner-identifies-the-top-cybersecurity-trends-for-2026</link>
+      <guid isPermaLink="true">https://www.gartner.com/en/newsroom/press-releases/2026-02-05-gartner-identifies-the-top-cybersecurity-trends-for-2026</guid>
+      <description>Gartner's top cybersecurity trends for 2026 include AI-native threat detection, software supply chain integrity, post-quantum cryptography readiness, and the expanding regulatory compliance burden. Organisations are advised to prioritise AI governance frameworks alongside traditional controls. | Source: Gartner</description>
+      <pubDate>Thu, 05 Feb 2026 12:00:00 GMT</pubDate>
+      <category>Industry Trends</category>
+    </item>
+    <item>
+      <title>WEF Global Cybersecurity Outlook 2026: AI-Assisted Attacks and Widening Skills Gap</title>
+      <link>https://reports.weforum.org/docs/WEF_Global_Cybersecurity_Outlook_2026.pdf</link>
+      <guid isPermaLink="true">https://reports.weforum.org/docs/WEF_Global_Cybersecurity_Outlook_2026.pdf</guid>
+      <description>The World Economic Forum's 2026 cybersecurity outlook highlights that AI-assisted attacks are accelerating faster than defensive capabilities. The report notes a widening global cybersecurity skills gap and calls for increased public-private collaboration on critical infrastructure protection. | Source: World Economic Forum</description>
+      <pubDate>Mon, 20 Jan 2026 09:00:00 GMT</pubDate>
+      <category>Industry Trends</category>
+    </item>
+    <item>
+      <title>New Infosec Products of the Week: May 22, 2026</title>
+      <link>https://www.helpnetsecurity.com/2026/05/22/new-infosec-products-of-the-week-may-22-2026/</link>
+      <guid isPermaLink="true">https://www.helpnetsecurity.com/2026/05/22/new-infosec-products-of-the-week-may-22-2026/</guid>
+      <description>Help Net Security's weekly roundup includes Trust3 AI's MCP Security standard for safeguarding enterprise agentic AI, Babel Street's Insights Investigator for AI-assisted investigations, and several new SIEM and threat-intelligence integrations announced at RSA Conference 2026. | Source: Help Net Security</description>
+      <pubDate>Fri, 22 May 2026 10:00:00 GMT</pubDate>
+      <category>Industry News</category>
+    </item>
+    <item>
+      <title>Supply Chain Attacks, AI Security, and Major Breaches Define Cybersecurity This Week in May 2026</title>
+      <link>https://www.esecurityplanet.com/weekly-roundup/supply-chain-attacks-ai-security-and-major-breaches-define-this-week-in-cybersecurity-in-may-2026/</link>
+      <guid isPermaLink="true">https://www.esecurityplanet.com/weekly-roundup/supply-chain-attacks-ai-security-and-major-breaches-define-this-week-in-cybersecurity-in-may-2026/</guid>
+      <description>eSecurity Planet's weekly roundup covers the Laravel-Lang supply chain attack, the Megalodon GitHub commit-injection campaign, ongoing Drupal exploitation, and the broader trend of AI-assisted offensive security tooling lowering the bar for sophisticated attacks against enterprise targets. | Source: eSecurity Planet</description>
+      <pubDate>Fri, 23 May 2026 12:00:00 GMT</pubDate>
+      <category>Weekly Roundup</category>
+    </item>
+  </channel>
+</rss>
