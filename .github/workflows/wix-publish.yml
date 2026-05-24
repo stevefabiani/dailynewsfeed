@@ -1,0 +1,40 @@
+name: Publish to Wix
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - "archive/**"
+
+concurrency:
+  group: wix-publish
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Publish to Wix
+        env:
+          WIX_API_KEY:   ${{ secrets.WIX_API_KEY }}
+          WIX_SITE_ID:   ${{ secrets.WIX_SITE_ID }}
+          WIX_MEMBER_ID: ${{ secrets.WIX_MEMBER_ID }}
+        run: python3 wix_publish.py
+      - name: Commit cached state if it changed
+        run: |
+          if [ -n "$(git status --porcelain wix_state.json 2>/dev/null)" ]; then
+            git config user.name  "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add wix_state.json
+            git commit -m "Update wix_state.json [skip ci]"
+            git push
+          fi
