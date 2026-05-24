@@ -34,9 +34,9 @@ API_BASE = "https://www.wixapis.com"
 CATEGORY_LABEL = "Daily News Roundup"
 COVER_URL = (
     "https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/"
-    "Color%20logo%20with%20background.svg"
+    "assets/cover.png"
 )
-COVER_DISPLAY_NAME = "Cobalt Shields logo"
+COVER_DISPLAY_NAME = "Cobalt Shields cover"
 
 
 # ---------- HTTP helpers ---------------------------------------------------
@@ -132,7 +132,7 @@ def ensure_cover(state: dict[str, Any]) -> str | None:
         "url": COVER_URL,
         "displayName": COVER_DISPLAY_NAME,
         "mediaType": "IMAGE",
-        "mimeType": "image/svg+xml",
+        "mimeType": "image/png",
         "private": False,
     }
     try:
