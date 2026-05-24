@@ -9,9 +9,12 @@
     <pubDate>Sun, 24 May 2026 06:21:21 GMT</pubDate>
     <generator>dailynewsfeed/pipeline.py</generator>
     <image>
-      <url>https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/assets/cobalt-shields-logo.png</url>
+      <url>https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/Color%20logo%20with%20background.svg</url>
       <title>Cobalt Shields - What We're Reading Today</title>
       <link>https://github.com/stevefabiani/dailynewsfeed</link>
+      <width>144</width>
+      <height>46</height>
+      <description>Cobalt Shields — Trusted | Reliable</description>
     </image>
     <atom:link href="https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
