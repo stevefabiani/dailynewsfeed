@@ -37,6 +37,7 @@ COVER_URL = (
     "assets/cover.png"
 )
 COVER_DISPLAY_NAME = "Cobalt Shields cover"
+HEADING_COLOR = "#01328e"  # Cobalt Shields brand blue
 
 
 # ---------- HTTP helpers ---------------------------------------------------
@@ -176,10 +177,21 @@ def _nid(prefix: str) -> str:
     return f"{prefix}{_node_counter[0]}"
 
 
-def text_node(text: str, *, link: str | None = None, bold: bool = False) -> dict:
+def text_node(
+    text: str,
+    *,
+    link: str | None = None,
+    bold: bool = False,
+    color: str | None = None,
+) -> dict:
     decorations: list[dict] = []
     if bold:
         decorations.append({"type": "BOLD", "fontWeightValue": 700})
+    if color:
+        decorations.append({
+            "type": "COLOR",
+            "colorData": {"foreground": color},
+        })
     if link:
         decorations.append({
             "type": "LINK",
@@ -201,7 +213,7 @@ def heading(text: str, *, link: str | None = None, level: int = 3) -> dict:
     return {
         "type": "HEADING",
         "id": _nid("h"),
-        "nodes": [text_node(text, link=link, bold=True)],
+        "nodes": [text_node(text, link=link, bold=True, color=HEADING_COLOR)],
         "headingData": {"level": level},
     }
 
