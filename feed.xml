@@ -1,13 +1,18 @@
 <?xml version="1.0" ?>
 <rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
   <channel>
-    <title>Daily IT News</title>
+    <title>Cobalt Shields - What We're Reading Today</title>
     <link>https://github.com/stevefabiani/dailynewsfeed</link>
-    <description>Top IT, cybersecurity, and infrastructure stories — updated daily</description>
+    <description>Cobalt Shields — Trusted | Reliable. Daily IT, cybersecurity, and infrastructure reading list curated for healthcare, higher ed, government, K-12, and nonprofit leaders.</description>
     <language>en-us</language>
     <lastBuildDate>Sun, 24 May 2026 06:21:21 GMT</lastBuildDate>
     <pubDate>Sun, 24 May 2026 06:21:21 GMT</pubDate>
     <generator>dailynewsfeed/pipeline.py</generator>
+    <image>
+      <url>https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/assets/cobalt-shields-logo.png</url>
+      <title>Cobalt Shields - What We're Reading Today</title>
+      <link>https://github.com/stevefabiani/dailynewsfeed</link>
+    </image>
     <atom:link href="https://raw.githubusercontent.com/stevefabiani/dailynewsfeed/main/feed.xml" rel="self" type="application/rss+xml"/>
     <item>
       <title>Trump cancels AI executive order signing as California's Newsom signs worker-protection AI order</title>
