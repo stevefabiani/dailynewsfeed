@@ -15,8 +15,9 @@ import argparse
 import json
 import sys
 import urllib.request
-from datetime import datetime, timezone
-from email.utils import formatdate
+import xml.etree.ElementTree as ET
+from datetime import datetime, timedelta, timezone
+from email.utils import formatdate, parsedate_to_datetime
 from pathlib import Path
 from xml.dom.minidom import parseString
 from xml.etree.ElementTree import Element, SubElement, tostring
@@ -29,6 +30,7 @@ HN_ITEM_URL = "https://news.ycombinator.com/item?id={id}"
 DEFAULT_OUTPUT = Path(__file__).parent / "feed.xml"
 DEFAULT_COUNT = 30
 MAX_EXAMINE = 200
+MAX_AGE_DAYS = 7
 
 IT_KEYWORDS = {
     "security", "linux", "python", "cloud", "devops", "kubernetes", "docker",
@@ -85,7 +87,102 @@ def load_json_stories(path: Path, count: int) -> list[dict]:
     return stories
 
 
-def build_feed(stories: list[dict]) -> str:
+def format_description(story: dict) -> str:
+    desc_parts: list[str] = []
+    if story.get("description"):
+        desc_parts.append(story["description"])
+    if story.get("source"):
+        desc_parts.append(f"Source: {story['source']}")
+    if story.get("score"):
+        desc_parts.append(f"Score: {story['score']}")
+    if story.get("descendants") is not None:
+        desc_parts.append(f"Comments: {story['descendants']}")
+    if story.get("by"):
+        desc_parts.append(f"By: {story['by']}")
+    return " | ".join(desc_parts)
+
+
+def _parse_pubdate(value: str | None) -> datetime | None:
+    if not value:
+        return None
+    try:
+        dt = parsedate_to_datetime(value)
+    except (TypeError, ValueError):
+        return None
+    if dt is None:
+        return None
+    if dt.tzinfo is None:
+        dt = dt.replace(tzinfo=timezone.utc)
+    return dt
+
+
+def story_to_item(story: dict) -> dict:
+    """Normalize a fetched/curated story into a uniform feed item."""
+    url = story.get("url") or HN_ITEM_URL.format(id=story.get("id", ""))
+    pub = story.get("pubDate")
+    if not pub and story.get("time"):
+        dt = datetime.fromtimestamp(story["time"], tz=timezone.utc)
+        pub = formatdate(dt.timestamp(), usegmt=True)
+    return {
+        "title": story.get("title", "(no title)"),
+        "link": url,
+        "guid": story.get("guid") or url,
+        "description": format_description(story),
+        "pubDate": pub or "",
+        "category": story.get("category", ""),
+    }
+
+
+def existing_items(path: Path) -> list[dict]:
+    """Load items already present in an RSS file, preserving descriptions verbatim."""
+    if not path.exists():
+        return []
+    try:
+        channel = ET.parse(path).getroot().find("channel")
+    except ET.ParseError:
+        return []
+    if channel is None:
+        return []
+    items: list[dict] = []
+    for el in channel.findall("item"):
+        link = (el.findtext("link") or "").strip()
+        items.append({
+            "title": (el.findtext("title") or "").strip(),
+            "link": link,
+            "guid": (el.findtext("guid") or link).strip(),
+            "description": (el.findtext("description") or "").strip(),
+            "pubDate": (el.findtext("pubDate") or "").strip(),
+            "category": (el.findtext("category") or "").strip(),
+        })
+    return items
+
+
+def merge_items(new_items: list[dict], old_items: list[dict], count: int) -> list[dict]:
+    """Prepend new items ahead of existing ones, drop duplicates and anything
+    older than MAX_AGE_DAYS, order newest-first, and cap the total at ``count``."""
+    cutoff = datetime.now(timezone.utc) - timedelta(days=MAX_AGE_DAYS)
+    oldest = datetime.min.replace(tzinfo=timezone.utc)
+    merged: list[dict] = []
+    seen: set[str] = set()
+    for item in [*new_items, *old_items]:
+        key = item.get("guid") or item.get("link")
+        if not key or key in seen:
+            continue
+        seen.add(key)
+        dt = _parse_pubdate(item.get("pubDate"))
+        if dt is not None and dt < cutoff:
+            continue  # outside the 7-day window
+        item["_dt"] = dt
+        merged.append(item)
+    merged.sort(key=lambda i: i["_dt"] or oldest, reverse=True)
+    for item in merged:
+        item.pop("_dt", None)
+    if count and count > 0:
+        merged = merged[:count]
+    return merged
+
+
+def build_feed(items: list[dict]) -> str:
     rss = Element("rss", version="2.0")
     rss.set("xmlns:atom", "http://www.w3.org/2005/Atom")
 
@@ -122,35 +219,21 @@ def build_feed(stories: list[dict]) -> str:
     atom_link.set("rel", "self")
     atom_link.set("type", "application/rss+xml")
 
-    for story in stories:
+    for item in items:
         item_el = SubElement(channel, "item")
-        SubElement(item_el, "title").text = story.get("title", "(no title)")
+        SubElement(item_el, "title").text = item.get("title", "(no title)")
 
-        url = story.get("url") or HN_ITEM_URL.format(id=story.get("id", ""))
+        url = item.get("link", "")
         SubElement(item_el, "link").text = url
-        SubElement(item_el, "guid", isPermaLink="true").text = url
+        SubElement(item_el, "guid", isPermaLink="true").text = item.get("guid") or url
 
-        desc_parts: list[str] = []
-        if story.get("description"):
-            desc_parts.append(story["description"])
-        if story.get("source"):
-            desc_parts.append(f"Source: {story['source']}")
-        if story.get("score"):
-            desc_parts.append(f"Score: {story['score']}")
-        if story.get("descendants") is not None:
-            desc_parts.append(f"Comments: {story['descendants']}")
-        if story.get("by"):
-            desc_parts.append(f"By: {story['by']}")
-        SubElement(item_el, "description").text = " | ".join(desc_parts)
+        SubElement(item_el, "description").text = item.get("description", "")
 
-        if story.get("pubDate"):
-            SubElement(item_el, "pubDate").text = story["pubDate"]
-        elif story.get("time"):
-            pub = datetime.fromtimestamp(story["time"], tz=timezone.utc)
-            SubElement(item_el, "pubDate").text = formatdate(pub.timestamp(), usegmt=True)
+        if item.get("pubDate"):
+            SubElement(item_el, "pubDate").text = item["pubDate"]
 
-        if story.get("category"):
-            SubElement(item_el, "category").text = story["category"]
+        if item.get("category"):
+            SubElement(item_el, "category").text = item["category"]
 
     raw = tostring(rss, encoding="unicode", xml_declaration=False)
     pretty = parseString(f'<?xml version="1.0" encoding="UTF-8"?>{raw}').toprettyxml(
@@ -172,14 +255,22 @@ def main() -> None:
     else:
         stories = fetch_live(args.count)
 
-    if not stories:
-        print("No stories found; aborting.", file=sys.stderr)
+    out = Path(args.output)
+    new_items = [story_to_item(s) for s in stories]
+    old_items = existing_items(out)
+    items = merge_items(new_items, old_items, args.count)
+    print(
+        f"Merging {len(new_items)} new + {len(old_items)} existing "
+        f"-> {len(items)} items (dropped items older than {MAX_AGE_DAYS} days)."
+    )
+
+    if not items:
+        print("No items within the window; aborting.", file=sys.stderr)
         sys.exit(1)
 
-    xml_content = build_feed(stories)
-    out = Path(args.output)
+    xml_content = build_feed(items)
     out.write_text(xml_content, encoding="utf-8")
-    print(f"Written {out} ({out.stat().st_size:,} bytes, {len(stories)} items)")
+    print(f"Written {out} ({out.stat().st_size:,} bytes, {len(items)} items)")
 
 
 if __name__ == "__main__":
