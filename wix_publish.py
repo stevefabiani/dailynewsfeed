@@ -229,6 +229,7 @@ def divider() -> dict:
 
 def build_rich_content(intro: str, items: list[dict[str, str]]) -> dict:
     nodes: list[dict] = [paragraph(text_node(intro))]
+    nodes.append(divider())
     for i, it in enumerate(items):
         nodes.append(heading(it["title"], link=it["link"] or None, level=3))
         # Description may contain a trailing "| Source: X" — strip embedded
