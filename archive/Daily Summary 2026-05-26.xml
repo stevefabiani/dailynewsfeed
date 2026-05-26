@@ -1,0 +1,36 @@
+<?xml version="1.0" ?>
+<rss xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+  <channel>
+    <title>Cobalt Shields - What We're Reading Today — Summary for 2026-05-26</title>
+    <link>https://github.com/stevefabiani/dailynewsfeed</link>
+    <description>Daily IT news summary for Tuesday, 26 May 2026. Paywall-free reporting from reliable sources, covering items published or updated after 02:30 on the previous day (Monday, 25 May 2026) and relevant to healthcare, higher ed, government, K-12, and nonprofit sectors.</description>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 May 2026 14:30:00 GMT</lastBuildDate>
+    <pubDate>Tue, 26 May 2026 14:30:00 GMT</pubDate>
+    <generator>dailynewsfeed/pipeline.py</generator>
+    <item>
+      <title>Hard-coded ASP.NET keys in KnowledgeDeliver LMS (CVE-2026-5426) exploited to deploy Godzilla web shell and Cobalt Strike at schools</title>
+      <link>https://thehackernews.com/2026/05/knowledgedeliver-lms-flaw-exploited-to.html</link>
+      <guid isPermaLink="true">https://thehackernews.com/2026/05/knowledgedeliver-lms-flaw-exploited-to.html</guid>
+      <description>Google Mandiant disclosed that attackers are exploiting CVE-2026-5426 (CVSS 7.5), a hard-coded ASP.NET machine-key flaw in Digital Knowledge's KnowledgeDeliver learning management system that enables unauthenticated remote code execution through ViewState deserialization. After gaining access, the operators drop the Godzilla web shell and tamper with site JavaScript to show fake "security plugin" prompts that ultimately deliver a Cobalt Strike Beacon to visitors. KnowledgeDeliver is widely deployed across educational institutions, making this a direct threat to K-12 and higher-ed IT teams. Administrators should upgrade to the patched release (post–February 24, 2026), replace any shared machine keys with unique secrets, and deploy endpoint monitoring. | Source: The Hacker News</description>
+      <pubDate>Tue, 26 May 2026 11:00:00 GMT</pubDate>
+      <category>Vulnerabilities</category>
+    </item>
+    <item>
+      <title>Anthropic's restricted Claude Mythos model spotted heading to Claude Code</title>
+      <link>https://www.bleepingcomputer.com/news/artificial-intelligence/anthropics-restricted-claude-mythos-model-may-be-coming-to-claude-code/</link>
+      <guid isPermaLink="true">https://www.bleepingcomputer.com/news/artificial-intelligence/anthropics-restricted-claude-mythos-model-may-be-coming-to-claude-code/</guid>
+      <description>BleepingComputer reports that Anthropic appears to be preparing a public rollout of Claude Mythos, the frontier model announced in April 2026 as a restricted system because it can autonomously develop professional-grade cyberattacks. Users briefly spotted a "claude-mythos-1-preview" toggle in Claude Code before it was removed, and the model has also surfaced in Claude Security. Mythos is the engine behind Anthropic's Glasswing program, which surfaced more than 10,000 high- and critical-severity vulnerabilities in its first month. IT leaders evaluating AI-assisted development should weigh both the defensive upside and the dual-use risk as these capabilities reach mainstream tooling. | Source: BleepingComputer</description>
+      <pubDate>Mon, 25 May 2026 17:07:00 GMT</pubDate>
+      <category>AI Security</category>
+    </item>
+    <item>
+      <title>FBI warns of Kali365 phishing-as-a-service abusing OAuth device codes to hijack Microsoft 365 accounts</title>
+      <link>https://www.bleepingcomputer.com/news/security/fbi-warns-of-kali365-phishing-service-targeting-microsoft-365-accounts/</link>
+      <guid isPermaLink="true">https://www.bleepingcomputer.com/news/security/fbi-warns-of-kali365-phishing-service-targeting-microsoft-365-accounts/</guid>
+      <description>The FBI issued an alert about Kali365, a phishing-as-a-service platform that emerged in April 2026 and is sold via Telegram to compromise Microsoft 365 and Entra accounts without stealing passwords or intercepting MFA codes. It abuses Microsoft's legitimate OAuth 2.0 device-authorization flow — tricking victims into entering an attacker-generated device code and completing MFA — to hand the attacker a full-access token, and offers an adversary-in-the-middle "Cookie Link" mode to capture authenticated sessions. Attackers have accessed mailboxes and created hidden inbox rules to mask activity; similar kits like EvilTokens and Tycoon2FA use the same technique. The FBI urges organizations to restrict or block device-code authentication via Conditional Access, audit existing device-code usage, and report incidents to IC3. | Source: BleepingComputer</description>
+      <pubDate>Mon, 25 May 2026 12:45:00 GMT</pubDate>
+      <category>Phishing</category>
+    </item>
+  </channel>
+</rss>
