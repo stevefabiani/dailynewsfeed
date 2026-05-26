@@ -304,10 +304,11 @@ def main() -> None:
     deleted = delete_old_posts(category_id)
     print(f"  removed {deleted} previously-published post(s)")
 
-    title = f"Cobalt Shields — What We're Reading Today ({date_str})"
+    title = f"Cobalt Shields — What We're Reading Today"
     intro = (
-        f"Today's curated IT reading list for healthcare, higher ed, government, "
-        f"K-12, and nonprofit leaders. {channel_desc}"
+        f"Here are some stories that have caught our eye in the last week. "
+        f"These touch on issues relevant to our healthcare, higher ed, K-12, "
+        f"government, and nonprofit colleagues."
     )
     rich = build_rich_content(intro, items)
 
