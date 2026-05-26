@@ -1,0 +1,54 @@
+name: Auto-merge daily brief to main
+
+on:
+  push:
+    branches:
+      - "claude/**"
+    paths:
+      - "feed.xml"
+      - "archive/**"
+
+concurrency:
+  group: auto-merge-main
+  cancel-in-progress: false
+
+jobs:
+  merge:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      actions: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Fast-forward main to the pushed brief
+        id: ff
+        env:
+          HEAD_REF: ${{ github.ref_name }}
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          echo "pushed=false" >> "$GITHUB_OUTPUT"
+          git fetch --no-tags origin "$HEAD_REF"
+          TARGET="$(git rev-parse FETCH_HEAD)"
+          if git merge-base --is-ancestor "$TARGET" HEAD; then
+            echo "main already contains $TARGET ($HEAD_REF); nothing to merge."
+          elif git merge --ff-only "$TARGET"; then
+            echo "Fast-forwarded main to $TARGET ($HEAD_REF)."
+            git push origin main
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "::error::main diverged; cannot fast-forward from $HEAD_REF ($TARGET)."
+            exit 1
+          fi
+
+      - name: Trigger Wix publish
+        if: steps.ff.outputs.pushed == 'true'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: gh workflow run wix-publish.yml --ref main
